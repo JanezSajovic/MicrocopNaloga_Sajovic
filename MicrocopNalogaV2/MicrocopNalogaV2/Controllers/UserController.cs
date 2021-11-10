@@ -30,6 +30,7 @@ namespace MicrocopNalogaV2.Controllers
 
         // Api Get klic za seznam vseh uporabnikov v bazi
         [HttpGet]
+        [Route("ListOfUsers")]
         public async Task<List<UserModel>> Gets() {
             try
             {
@@ -49,7 +50,7 @@ namespace MicrocopNalogaV2.Controllers
         // Api Get klic za pridobitev posameznega uporabnika na podlagi njegovega IDja
         // Klic je zaščiten z JwtBearer tokenom
         // Do klica lahko dostopajo samo registrirani in prijavljeni Admini
-        [HttpGet("{userId}")]
+        [HttpGet("GetUser/{userId}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<UserModel> Get(int userId)
         {
@@ -72,7 +73,7 @@ namespace MicrocopNalogaV2.Controllers
         // Api post klic za kreiranje novega uporabnika
         // Podatke preberemo iz telesa json zapisa ([FromBody])
         // Klic je zaščiten z JwtBearer tokenom
-        [HttpPost]
+        [HttpPost("CreateUser")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<UserModel> Create([FromBody]UserModel user)
         {
@@ -95,7 +96,7 @@ namespace MicrocopNalogaV2.Controllers
 
         // Api Put klic za posodobitev uporabnikovih informacij
         // Klic je zaščiten z JwtBearer tokenom
-        [HttpPut("{userId}")]
+        [HttpPut("UpdateUser/{userId}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult> Update(int userId, [FromBody]UserModel user)
         {
@@ -123,7 +124,7 @@ namespace MicrocopNalogaV2.Controllers
 
         // Api Delete klic za brisanje uporabnika, na podlagi njegovega IDja
         // Klic je zaščiten z JwtBearer tokenom
-        [HttpDelete("{userId}")]
+        [HttpDelete("DeleteUser/{userId}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<string> Delete(int userId)
         {
@@ -149,7 +150,8 @@ namespace MicrocopNalogaV2.Controllers
 
         // Api Post klic za validiranje uporabnikovega gesla
         // Klic je zaščiten z JwtBearer tokenom
-        [HttpPost("{username}/{password}")]
+        [HttpPost("ValidatePassword/{username}/{password}")]
+
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<string> ValidatePassword(string username, string password)
         {
