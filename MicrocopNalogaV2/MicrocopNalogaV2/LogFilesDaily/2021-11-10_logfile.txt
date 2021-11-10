@@ -35,3 +35,6 @@
 2021-11-10 18:49:51.5320 INFO Hosting environment: Development
 2021-11-10 18:49:51.5320 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
 2021-11-10 18:56:04.3989 INFO Log level: Info Time: 10/11/2021 18:56:04 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-10 19:17:34.8283 INFO Application started. Press Ctrl+C to shut down.
+2021-11-10 19:17:34.9001 INFO Hosting environment: Development
+2021-11-10 19:17:34.9024 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2

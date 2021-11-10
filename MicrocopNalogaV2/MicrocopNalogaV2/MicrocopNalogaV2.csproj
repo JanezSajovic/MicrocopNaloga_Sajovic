@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MicrocopNalogaV2.Data\MicrocopNalogaV2.Data.csproj" />
+    <ProjectReference Include="..\MicrocopNalogaV2.Data\MicrocopNalogaV2.Models.csproj" />
     <ProjectReference Include="..\MicrocopNalogaV2.Services\MicrocopNalogaV2.Services.csproj" />
   </ItemGroup>
 

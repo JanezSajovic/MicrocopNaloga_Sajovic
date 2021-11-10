@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicrocopNalogaV2", "MicrocopNalogaV2\MicrocopNalogaV2.csproj", "{D341F158-AA49-40C5-AC93-72699BC54926}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicrocopNalogaV2.Data", "MicrocopNalogaV2.Data\MicrocopNalogaV2.Data.csproj", "{0ECC2119-02F6-4368-AD4A-14CFEA2302BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicrocopNalogaV2.Models", "MicrocopNalogaV2.Data\MicrocopNalogaV2.Models.csproj", "{0ECC2119-02F6-4368-AD4A-14CFEA2302BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicrocopNalogaV2.Services", "MicrocopNalogaV2.Services\MicrocopNalogaV2.Services.csproj", "{2F441BF1-C8A4-45E5-B352-22E88DDE41A0}"
 EndProject

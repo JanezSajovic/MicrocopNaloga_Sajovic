@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MicrocopNalogaV2.Data\MicrocopNalogaV2.Data.csproj" />
+    <ProjectReference Include="..\MicrocopNalogaV2.Data\MicrocopNalogaV2.Models.csproj" />
   </ItemGroup>
 
 </Project>
