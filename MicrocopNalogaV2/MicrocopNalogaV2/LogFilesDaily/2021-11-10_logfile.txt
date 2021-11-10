@@ -1,0 +1,7 @@
+2021-11-10 16:47:36.8554 INFO Application started. Press Ctrl+C to shut down.
+2021-11-10 16:47:36.8823 INFO Hosting environment: Development
+2021-11-10 16:47:36.8823 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-10 16:47:47.4756 INFO Log level: Info Time: 10/11/2021 16:47:47 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-10 16:48:02.6041 INFO Log level: Info Time: 10/11/2021 16:48:02 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-10 16:49:55.7278 INFO Log level: Info Time: 10/11/2021 16:49:55 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User API method: HttpPost Request parameters: MicrocopNalogaV2.UserModel Message: Creating user with body parameters.
+2021-11-10 16:51:07.5858 INFO Log level: Info Time: 10/11/2021 16:51:07 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User API method: HttpPost Request parameters: MicrocopNalogaV2.UserModel Message: Creating user with body parameters.
