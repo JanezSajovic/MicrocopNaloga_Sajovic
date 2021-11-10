@@ -33,18 +33,13 @@ namespace MicrocopNalogaV2.Controllers
         [HttpGet]
         [Route("ListOfUsers")]
         public async Task<IActionResult> Gets() {
-            try
-            {
-                var userList = await _userRepository.Gets();
-                LoggingCalls("Info", "HttpGet", "no parameters", "Geting list of all users in database.");
-                return Ok(userList);
-            }
-            catch (Exception ex)
-            {
+            var userList = await _userRepository.Gets();
+            if (userList == null) {
                 LoggingCalls("Error", "HttpGet", "no parameters", "No users in database.");
                 return StatusCode((int)HttpStatusCode.InternalServerError, "No users in database.");
-                throw;
-            } 
+            }
+            LoggingCalls("Info", "HttpGet", "no parameters", "Geting list of all users in database.");
+            return Ok(userList);
         }
 
         // Api Get klic za pridobitev posameznega uporabnika na podlagi njegovega IDja
@@ -54,23 +49,14 @@ namespace MicrocopNalogaV2.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Get(int userId)
         {
-            try
+            var tempUser = await _userRepository.Get(userId);
+            if (tempUser == null)
             {
-                var tempUser = await _userRepository.Get(userId);
-                if (tempUser == null) {
-                    LoggingCalls("Error", "HttpGet", userId.ToString(), "User not found by given ID.");
-                    return StatusCode((int)HttpStatusCode.InternalServerError, "User not found by given ID");
-                }
-                LoggingCalls("Info", "HttpGet", userId.ToString(), "Getting one user by its ID.");
-                return Ok(tempUser);
+                LoggingCalls("Error", "HttpGet", userId.ToString(), "User not found by given ID.");
+                return StatusCode((int)HttpStatusCode.NotFound, "User not found by given ID");
             }
-            catch (Exception)
-            {
-                LoggingCalls("Error", "HttpGet", userId.ToString(), "User not found.");
-                return StatusCode((int)HttpStatusCode.InternalServerError, "User not found by given ID");
-                throw;
-            }
-            //return await _userRepository.Get(userId);
+            LoggingCalls("Info", "HttpGet", userId.ToString(), "Getting one user by its ID.");
+            return Ok(tempUser);
         }
 
         // Api post klic za kreiranje novega uporabnika
@@ -78,23 +64,16 @@ namespace MicrocopNalogaV2.Controllers
         // Klic je zaščiten z JwtBearer tokenom
         [HttpPost("CreateUser")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<UserModel> Create([FromBody]UserModel user)
+        public async Task<IActionResult> Create([FromBody]UserModel user)
         {
-            try
+            var tempUser = await _userRepository.Create(user);
+            if (tempUser == null)
             {
-                var tempUser = await _userRepository.Create(user);
-                if (tempUser != null) {
-                    LoggingCalls("Info", "HttpPost", user.ToString(), "Creating user with body parameters.");
-                    return tempUser;
-                }
-                
+                LoggingCalls("Error", "HttpPost", user.ToString(), "Creating user failed.");
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Creating user failed.");
             }
-            catch (Exception ex)
-            {
-                LoggingCalls("Error", "HttpPost", user.ToString(), ex.Message);
-                throw;
-            }
-            return await _userRepository.Create(user);
+            LoggingCalls("Info", "HttpPost", user.ToString(), "Creating user with body parameters successfull.");
+            return Ok(tempUser);
         }
 
         // Api Put klic za posodobitev uporabnikovih informacij
@@ -103,23 +82,15 @@ namespace MicrocopNalogaV2.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult> Update(int userId, [FromBody]UserModel user)
         {
-            try
+            var tempUser = _userRepository.Get(userId);
+            if (userId != tempUser.Id || tempUser == null)
             {
-                var tempUser = _userRepository.Get(userId);
-                if (userId != tempUser.Id || tempUser == null)
-                {
-                    LoggingCalls("Error", "HttpPut", userId + " " + user.ToString(), "Bad request error.");
-                    return BadRequest();
-                }
-                await _userRepository.Update(tempUser.Result);
-                LoggingCalls("Info", "HttpPut", userId + " " + user.ToString(), "Updating the user data.");
-                return NoContent();
+                LoggingCalls("Error", "HttpPut", userId + " " + user.ToString(), "Bad request error.");
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Updating user failed.");
             }
-            catch (Exception ex)
-            {
-                LoggingCalls("Error", "HttpPut", userId + " "+ user.ToString(), ex.Message);
-                throw;
-            }
+            await _userRepository.Update(tempUser.Result);
+            LoggingCalls("Info", "HttpPut", userId + " " + user.ToString(), "Updating the user data.");
+            return Ok("User successfuly updated.");
         }
 
         // Api Delete klic za brisanje uporabnika, na podlagi njegovega IDja
@@ -128,23 +99,15 @@ namespace MicrocopNalogaV2.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<string> Delete(int userId)
         {
-            try
+            var tempUser = _userRepository.Get(userId).Result;
+            if (tempUser == null)
             {
-                var tempUser = _userRepository.Get(userId).Result;
-                if (tempUser == null)
-                {
-                    LoggingCalls("Error", "HttpDelete", userId.ToString(), "User does not exists.");
-                    return "Uporabnik ne obstaja";
-                }
-                await _userRepository.Delete(tempUser.Id);
-                LoggingCalls("Info", "HttpDelete", userId.ToString(), "User was successfuly deleted.");
-                return "Izbris uspešen";
+                LoggingCalls("Error", "HttpDelete", userId.ToString(), "User does not exists.");
+                return "Uporabnik ne obstaja";
             }
-            catch (Exception ex)
-            {
-                LoggingCalls("Error", "HttpDelete", userId.ToString() , ex.Message);
-                throw;
-            }
+            await _userRepository.Delete(tempUser.Id);
+            LoggingCalls("Info", "HttpDelete", userId.ToString(), "User was successfuly deleted.");
+            return "Izbris uspešen";
         }
 
 

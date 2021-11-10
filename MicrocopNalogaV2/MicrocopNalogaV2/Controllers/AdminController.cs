@@ -1,8 +1,10 @@
 ﻿using MicrocopNalogaV2.Models;
 using MicrocopNalogaV2.Repository;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -19,11 +21,13 @@ namespace MicrocopNalogaV2.Controllers
     public class AdminController : ControllerBase { 
         private readonly IAdminRepository _adminRepository;
         private IConfiguration _config;
+        private readonly ILogger<AdminController> _logger;
 
-        public AdminController(IAdminRepository adminRepository, IConfiguration config)
+        public AdminController(IAdminRepository adminRepository, IConfiguration config, ILogger<AdminController> logger)
         {
             _adminRepository = adminRepository;
             _config = config;
+            _logger = logger;
         }
 
 
@@ -33,17 +37,13 @@ namespace MicrocopNalogaV2.Controllers
         [Route("Registration")]
         public async Task<IActionResult> Registration([FromBody] AdminModel admin)
         {
-                try
-                {
-                    var tempAdmin = await _adminRepository.Create(admin);
-                    return Ok(tempAdmin);
-                }
-                catch (Exception)
-                {
-
-                    return StatusCode((int)HttpStatusCode.InternalServerError, "Creating new admin was not successful.");
-                }
-        
+            var tempAdmin = await _adminRepository.Create(admin);
+            if (tempAdmin == null) {
+                LoggingCalls("Error", "HttpPost", admin.ToString(), "Creating admin failed.");
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Creating new admin was not successful.");
+            }
+            LoggingCalls("Info", "HttpPost", admin.ToString(), "Crating admin successful.");
+            return Ok(tempAdmin);
         }
 
 
@@ -52,22 +52,20 @@ namespace MicrocopNalogaV2.Controllers
         [HttpGet("Signin/{username}/{password}")]
         public async Task<IActionResult> Signin(string username, string password)
         {
-            try
+            AdminModel tempAdmin = new AdminModel()
             {
-                AdminModel tempAdmin = new AdminModel()
-                {
-                    Username = username,
-                    Password = password
-                };
-                var admin = await AuthUser(tempAdmin);
-                if (admin.Id == 0) return StatusCode((int)HttpStatusCode.NotFound, "User does not exists.");
-                admin.ApiToken = GenerateJSONWebToken(tempAdmin);
-                return Ok(admin);
-            }
-            catch (Exception)
+                Username = username,
+                Password = password
+            };
+            var admin = await AuthUser(tempAdmin);
+            if (admin.Id == 0 || admin == null)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, "Username or password is incorect.");
+                LoggingCalls("Error", "HttpGet", username+password, "Signin in for admin failed.");
+                return StatusCode((int)HttpStatusCode.NotFound, "Admin does not exists.");
             }
+            admin.ApiToken = GenerateJSONWebToken(tempAdmin);
+            LoggingCalls("Error", "HttpGet", username + password, "Signin in for admin failed.");
+            return Ok(admin);
         }
 
 
@@ -91,6 +89,19 @@ namespace MicrocopNalogaV2.Controllers
               signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private void LoggingCalls(string level, string method, string para, string msg)
+        {
+            var clientIP = HttpContext.Connection.RemoteIpAddress?.ToString();
+            var clientName = HttpContext.Features.Get<IServerVariablesFeature>()["REMOTE_HOST"];
+            var hostName = string.Concat(this.Request.Scheme, "://", this.Request.Host, this.Request.Path, this.Request.QueryString);
+            string log =
+                "Log level: " + level + " Time: " + DateTime.Now +
+                " ClientIp: " + clientIP + " ClientName: " + clientName +
+                " Host name: " + hostName + " API method: " + method +
+                " Request parameters: " + para + " Message: " + msg + "";
+            _logger.LogInformation(log);
         }
     }
 }

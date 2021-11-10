@@ -38,5 +38,13 @@ namespace MicrocopNalogaV2
         public string Password { get; set; }
 
         public bool IsValidated { get; set; }
+
+
+        public override string ToString()
+        {
+            return String.Format("Id: {0}, Username: {1}, Password: {2}, Full name: {3}, Email: {4}, " +
+                "Phone number: {5}, Language: {6}, Culture: {7}, Is validated: {8}", 
+                Id, UserName, Password, FullName, Email, PhoneNumber, Language, Culture, IsValidated);
+        }
     }
 }
