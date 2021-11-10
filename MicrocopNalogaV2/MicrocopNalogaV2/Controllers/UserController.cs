@@ -42,9 +42,7 @@ namespace MicrocopNalogaV2.Controllers
             {
                 LoggingCalls("Error", "HttpGet", "no parameters", ex.Message);
                 throw;
-            }
-            
-            
+            } 
         }
 
         // Api Get klic za pridobitev posameznega uporabnika na podlagi njegovega IDja
@@ -117,9 +115,6 @@ namespace MicrocopNalogaV2.Controllers
                 LoggingCalls("Error", "HttpPut", userId + " "+ user.ToString(), ex.Message);
                 throw;
             }
-            
-
-            
         }
 
         // Api Delete klic za brisanje uporabnika, na podlagi njegovega IDja

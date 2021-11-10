@@ -27,3 +27,11 @@
 2021-11-10 18:20:52.7328 INFO Application started. Press Ctrl+C to shut down.
 2021-11-10 18:20:52.8039 INFO Hosting environment: Development
 2021-11-10 18:20:52.8039 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-10 18:46:38.2566 INFO Application started. Press Ctrl+C to shut down.
+2021-11-10 18:46:38.3214 INFO Hosting environment: Development
+2021-11-10 18:46:38.3243 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-10 18:46:46.6687 INFO Log level: Info Time: 10/11/2021 18:46:46 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-10 18:49:51.5070 INFO Application started. Press Ctrl+C to shut down.
+2021-11-10 18:49:51.5320 INFO Hosting environment: Development
+2021-11-10 18:49:51.5320 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-10 18:56:04.3989 INFO Log level: Info Time: 10/11/2021 18:56:04 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.

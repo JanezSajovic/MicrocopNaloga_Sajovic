@@ -87,10 +87,9 @@ namespace MicrocopNalogaV2.Repository
         {
             try
             {
-
                 return await _context.Users.ToListAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
