@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace MicrocopNalogaV2.Controllers
@@ -31,16 +32,17 @@ namespace MicrocopNalogaV2.Controllers
         // Api Get klic za seznam vseh uporabnikov v bazi
         [HttpGet]
         [Route("ListOfUsers")]
-        public async Task<List<UserModel>> Gets() {
+        public async Task<IActionResult> Gets() {
             try
             {
                 var userList = await _userRepository.Gets();
                 LoggingCalls("Info", "HttpGet", "no parameters", "Geting list of all users in database.");
-                return userList;
+                return Ok(userList);
             }
             catch (Exception ex)
             {
-                LoggingCalls("Error", "HttpGet", "no parameters", ex.Message);
+                LoggingCalls("Error", "HttpGet", "no parameters", "No users in database.");
+                return StatusCode((int)HttpStatusCode.InternalServerError, "No users in database.");
                 throw;
             } 
         }
@@ -50,22 +52,25 @@ namespace MicrocopNalogaV2.Controllers
         // Do klica lahko dostopajo samo registrirani in prijavljeni Admini
         [HttpGet("GetUser/{userId}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<UserModel> Get(int userId)
+        public async Task<IActionResult> Get(int userId)
         {
             try
             {
                 var tempUser = await _userRepository.Get(userId);
-                if (tempUser != null) {
-                    LoggingCalls("Info", "HttpGet", userId.ToString(), "Getting one user by its ID.");
-                    return tempUser;
+                if (tempUser == null) {
+                    LoggingCalls("Error", "HttpGet", userId.ToString(), "User not found by given ID.");
+                    return StatusCode((int)HttpStatusCode.InternalServerError, "User not found by given ID");
                 }
+                LoggingCalls("Info", "HttpGet", userId.ToString(), "Getting one user by its ID.");
+                return Ok(tempUser);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                LoggingCalls("Error", "HttpGet", userId.ToString(), ex.Message);
+                LoggingCalls("Error", "HttpGet", userId.ToString(), "User not found.");
+                return StatusCode((int)HttpStatusCode.InternalServerError, "User not found by given ID");
                 throw;
             }
-            return await _userRepository.Get(userId);
+            //return await _userRepository.Get(userId);
         }
 
         // Api post klic za kreiranje novega uporabnika

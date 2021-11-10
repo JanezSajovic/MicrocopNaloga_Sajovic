@@ -83,8 +83,8 @@ namespace MicrocopNalogaV2
             });
 
             // Povezave in kreiranje Sqlite baz za admine in uporabnike
-            services.AddDbContext<UserContext>(x => x.UseSqlite("Data source=users.db"));
-            services.AddDbContext<AdminContext>(x => x.UseSqlite("Data source=admin-users.db"));
+            services.AddDbContext<UserContext>(x => x.UseSqlite("Data source=Databases/users.db"));
+            services.AddDbContext<AdminContext>(x => x.UseSqlite("Data source=Databases/admin.db"));
 
             // Konfiguracija JwtBearer avtentikacije 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(jwtOptions =>

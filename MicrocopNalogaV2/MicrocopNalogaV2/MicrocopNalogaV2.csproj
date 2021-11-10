@@ -32,4 +32,8 @@
     <ProjectReference Include="..\MicrocopNalogaV2.Services\MicrocopNalogaV2.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Databases\" />
+  </ItemGroup>
+
 </Project>

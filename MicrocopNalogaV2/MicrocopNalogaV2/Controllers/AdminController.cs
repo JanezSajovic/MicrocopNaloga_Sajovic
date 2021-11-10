@@ -38,10 +38,10 @@ namespace MicrocopNalogaV2.Controllers
                     var tempAdmin = await _adminRepository.Create(admin);
                     return Ok(tempAdmin);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
-                    return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+                    return StatusCode((int)HttpStatusCode.InternalServerError, "Creating new admin was not successful.");
                 }
         
         }
@@ -49,28 +49,24 @@ namespace MicrocopNalogaV2.Controllers
 
         // Api Get klic za prijavo Admina, pri tem prejme svoj JwtToken
         // ki ga uporabi za api klice nad uporabniki
-        [HttpGet]
-        [Route("Signin/{username}/{password}")]
+        [HttpGet("Signin/{username}/{password}")]
         public async Task<IActionResult> Signin(string username, string password)
         {
             try
             {
-                
                 AdminModel tempAdmin = new AdminModel()
                 {
-                    
                     Username = username,
                     Password = password
                 };
                 var admin = await AuthUser(tempAdmin);
-                if (admin.Id == 0) return StatusCode((int)HttpStatusCode.NotFound, "Invalid user");
+                if (admin.Id == 0) return StatusCode((int)HttpStatusCode.NotFound, "User does not exists.");
                 admin.ApiToken = GenerateJSONWebToken(tempAdmin);
                 return Ok(admin);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+                return StatusCode((int)HttpStatusCode.InternalServerError, "Username or password is incorect.");
             }
         }
 
@@ -80,8 +76,6 @@ namespace MicrocopNalogaV2.Controllers
         {
             return await _adminRepository.GetByUsernamePassword(admin);
         }
-
-
 
         // Generiranje JwtToken-a za vsakega novega uporabnika, ki se registrira in prijavi
         // Generiranje temelji na vnešenih podatkih s strani adminove registracije
