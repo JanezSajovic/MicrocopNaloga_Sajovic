@@ -65,3 +65,7 @@
 2021-11-11 13:18:33.7642 INFO Log level: Info Time: 11/11/2021 13:18:33 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/CreateUser API method: HttpPost Request parameters: Id: 6, Username: qweqwe, Password: E967D16DAE74A49B5E0E051225C5DAC0D76E5E38F13DD1628028CBCE108C25B6, Full name: string, Email: user@example.com, Phone number: 123456789, Language: string, Culture: st, Is validated: False Message: Creating user with body parameters successfull.
 2021-11-11 13:19:06.0061 INFO Log level: Info Time: 11/11/2021 13:19:06 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
 2021-11-11 13:19:12.8419 INFO Log level: Info Time: 11/11/2021 13:19:12 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/DeleteUser/6 API method: HttpDelete Request parameters: 6 Message: User successfuly deleted.
+2021-11-11 15:36:38.4819 INFO Application started. Press Ctrl+C to shut down.
+2021-11-11 15:36:38.5027 INFO Hosting environment: Development
+2021-11-11 15:36:38.5027 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaSajovic\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-11 15:36:48.8908 INFO Log level: Info Time: 11/11/2021 15:36:48 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
