@@ -31,7 +31,9 @@ Konfiguracija logiranja se nahaja v **nlog.config** datoteki znotraj projekta.
 Datoteke .log pa shranjujemo v mapo "**DailyLogFiles**" tudi znotraj projekta.
 Primer zapisa v .log datoteki
 
-[Imgur](https://imgur.com/HheXK5H)
+[Imgur](https://imgur.com/HheXK5H)  
 ![alt text](https://imgur.com/HheXK5H)
+
+<img src="https://imgur.com/HheXK5H">
 
 ####
