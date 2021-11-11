@@ -19,7 +19,8 @@ namespace MicrocopNalogaV2.Models
 
         public override string ToString()
         {
-            return String.Format("Id: {0}, Username: {1}, Password: {2}, ApiToken: {3}", Id, Username, Password, ApiToken);
+            return String.Format("Id: {0}, Username: {1}, Password: {2}, " +
+                "ApiToken: {3}", Id, Username, Password, ApiToken);
         }
 
     }
