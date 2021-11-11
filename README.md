@@ -31,8 +31,6 @@ Konfiguracija logiranja se nahaja v **nlog.config** datoteki znotraj projekta.
 Datoteke .log pa shranjujemo v mapo "**DailyLogFiles**" tudi znotraj projekta.
 Primer zapisa v .log datoteki
 
-![Tux, the Linux mascot](https://imgur.com/a/LkhlXQw)
-![Foo](https://imgur.com/a/LkhlXQw)
-![QWE](https://imgur.com/a/LkhlXQw "image Title")
+[Imgur](https://imgur.com/HheXK5H)
 
 ####
