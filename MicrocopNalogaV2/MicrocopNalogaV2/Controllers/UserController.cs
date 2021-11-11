@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using MicrocopNalogaV2.Models.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
@@ -64,32 +65,52 @@ namespace MicrocopNalogaV2.Controllers
         // Klic je zaščiten z JwtBearer tokenom
         [HttpPost("CreateUser")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> Create([FromBody]UserModel user)
+        public async Task<IActionResult> Create([FromBody]UserMiniModel user)
         {
-            var tempUser = await _userRepository.Create(user);
-            if (tempUser == null)
+            UserModel tempUser = new UserModel()
             {
-                LoggingCalls("Error", "HttpPost", user.ToString(), "Creating user failed.");
+                UserName = user.UserName,
+                FullName = user.FullName,
+                Password = user.Password,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                Culture = user.Culture,
+                Language = user.Language
+            };
+            var _User = await _userRepository.Create(tempUser);
+            if (_User == null)
+            {
+                LoggingCalls("Error", "HttpPost", _User.ToString(), "Creating user failed.");
                 return StatusCode((int)HttpStatusCode.InternalServerError, "Creating user failed.");
             }
-            LoggingCalls("Info", "HttpPost", user.ToString(), "Creating user with body parameters successfull.");
-            return Ok(tempUser);
+            LoggingCalls("Info", "HttpPost", _User.ToString(), "Creating user with body parameters successfull.");
+            return Ok(_User);
         }
 
         // Api Put klic za posodobitev uporabnikovih informacij
         // Klic je zaščiten z JwtBearer tokenom
         [HttpPut("UpdateUser/{userId}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<ActionResult> Update(int userId, [FromBody]UserModel user)
+        public async Task<ActionResult> Update(int userId, [FromBody]UserMiniModel user)
         {
-            var tempUser = _userRepository.Get(userId);
-            if (userId != tempUser.Id || tempUser == null)
+            UserModel tempUser = new UserModel()
             {
-                LoggingCalls("Error", "HttpPut", userId + " " + user.ToString(), "Bad request error.");
+                UserName = user.UserName,
+                FullName = user.FullName,
+                Password = user.Password,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                Culture = user.Culture,
+                Language = user.Language
+            };
+            var _User = _userRepository.Get(userId);
+            if (userId != _User.Id || _User == null)
+            {
+                LoggingCalls("Error", "HttpPut", userId + " " + _User.ToString(), "Bad request error.");
                 return StatusCode((int)HttpStatusCode.InternalServerError, "Updating user failed.");
             }
-            await _userRepository.Update(tempUser.Result);
-            LoggingCalls("Info", "HttpPut", userId + " " + user.ToString(), "Updating the user data.");
+            await _userRepository.Update(_User.Result);
+            LoggingCalls("Info", "HttpPut", userId + " " + _User.ToString(), "Updating the user data.");
             return Ok("User successfuly updated.");
         }
 

@@ -35,15 +35,20 @@ namespace MicrocopNalogaV2.Controllers
         // Admini nimajo zaščite nad svojimi klici. Samo nad api klici uporabnikov
         [HttpPost]
         [Route("Registration")]
-        public async Task<IActionResult> Registration([FromBody] AdminModel admin)
+        public async Task<IActionResult> Registration([FromBody] AdminMiniModel admin)
         {
-            var tempAdmin = await _adminRepository.Create(admin);
-            if (tempAdmin == null) {
-                LoggingCalls("Error", "HttpPost", admin.ToString(), "Creating admin failed.");
+            AdminModel tempAdmin = new AdminModel()
+            {
+                Username = admin.Username,
+                Password = admin.Password
+            };
+            var _Admin = await _adminRepository.Create(tempAdmin);
+            if (_Admin == null) {
+                LoggingCalls("Error", "HttpPost", _Admin.ToString(), "Creating admin failed.");
                 return StatusCode((int)HttpStatusCode.InternalServerError, "Creating new admin was not successful.");
             }
-            LoggingCalls("Info", "HttpPost", admin.ToString(), "Crating admin successful.");
-            return Ok(tempAdmin);
+            LoggingCalls("Info", "HttpPost", _Admin.ToString(), "Crating admin successful.");
+            return Ok(_Admin);
         }
 
 
