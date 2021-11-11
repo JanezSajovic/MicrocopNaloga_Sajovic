@@ -2,3 +2,4 @@
 2021-11-11 10:17:23.8782 INFO Hosting environment: Development
 2021-11-11 10:17:23.8782 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
 2021-11-11 10:18:50.0284 INFO Log level: Error Time: 11/11/2021 10:18:50 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/Signin/Jaka/jaka123 API method: HttpGet Request parameters: Jakajaka123 Message: Signin in for admin failed.
+2021-11-11 11:01:24.0199 INFO Log level: Error Time: 11/11/2021 11:01:24 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/Signin/Jaka/jaka123 API method: HttpGet Request parameters: Jakajaka123 Message: Signin in for admin failed.
