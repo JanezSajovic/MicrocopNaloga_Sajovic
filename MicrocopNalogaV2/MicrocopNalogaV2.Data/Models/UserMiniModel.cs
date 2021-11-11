@@ -26,6 +26,7 @@ namespace MicrocopNalogaV2.Models.Models
         public string Language { get; set; }
 
         [Required]
+        [StringLength(2)]
         public string Culture { get; set; }
 
         [Required]

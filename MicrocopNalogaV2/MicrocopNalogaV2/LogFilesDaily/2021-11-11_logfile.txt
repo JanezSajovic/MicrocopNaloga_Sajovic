@@ -43,3 +43,25 @@
 2021-11-11 12:42:01.0442 INFO Log level: Info Time: 11/11/2021 12:42:01 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
 2021-11-11 12:42:54.1353 INFO Log level: Info Time: 11/11/2021 12:42:54 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/CreateUser API method: HttpPost Request parameters: Id: 5, Username: Prešeren, Password: 66A4CC39223C748CEB038F309D67DDBE767B149CF779504AE5B8ECBB5EE02286, Full name: France Prešeren, Email: povodni.moz@gmail.com, Phone number: 0802288, Language: slovenščina, Culture: si, Is validated: False Message: Creating user with body parameters successfull.
 2021-11-11 12:43:18.6222 INFO Log level: Error Time: 11/11/2021 12:43:18 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/DeleteUser/3 API method: HttpDelete Request parameters: 3 Message: User does not exists.
+2021-11-11 12:46:26.5168 INFO Application started. Press Ctrl+C to shut down.
+2021-11-11 12:46:26.5435 INFO Hosting environment: Development
+2021-11-11 12:46:26.5435 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-11 12:48:01.5049 INFO Application started. Press Ctrl+C to shut down.
+2021-11-11 12:48:01.5299 INFO Hosting environment: Development
+2021-11-11 12:48:01.5299 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-11 12:48:15.2732 INFO Log level: Error Time: 11/11/2021 12:48:15 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/Signin/JureAdmin/admin123 API method: HttpGet Request parameters: JureAdmin admin123 Message: Signin in for admin successful.
+2021-11-11 12:50:10.8718 INFO Application started. Press Ctrl+C to shut down.
+2021-11-11 12:50:10.8922 INFO Hosting environment: Development
+2021-11-11 12:50:10.8922 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-11 12:50:22.5030 INFO Log level: Error Time: 11/11/2021 12:50:22 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/Signin/JureAdmin/admin123 API method: HttpGet Request parameters: JureAdmin admin123 Message: Signin in for admin successful.
+2021-11-11 12:51:36.3272 INFO Application started. Press Ctrl+C to shut down.
+2021-11-11 12:51:36.3533 INFO Hosting environment: Development
+2021-11-11 12:51:36.3560 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-11 12:51:49.5899 INFO Log level: Error Time: 11/11/2021 12:51:49 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/Signin/JureAdmin/admin123 API method: HttpGet Request parameters: JureAdmin admin123 Message: Signin in for admin successful.
+2021-11-11 13:17:32.0720 INFO Application started. Press Ctrl+C to shut down.
+2021-11-11 13:17:32.0937 INFO Hosting environment: Development
+2021-11-11 13:17:32.0937 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaV2\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-11 13:17:44.7460 INFO Log level: Error Time: 11/11/2021 13:17:44 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/Signin/JureAdmin/admin123 API method: HttpGet Request parameters: JureAdmin admin123 Message: Signin in for admin successful.
+2021-11-11 13:18:33.7642 INFO Log level: Info Time: 11/11/2021 13:18:33 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/CreateUser API method: HttpPost Request parameters: Id: 6, Username: qweqwe, Password: E967D16DAE74A49B5E0E051225C5DAC0D76E5E38F13DD1628028CBCE108C25B6, Full name: string, Email: user@example.com, Phone number: 123456789, Language: string, Culture: st, Is validated: False Message: Creating user with body parameters successfull.
+2021-11-11 13:19:06.0061 INFO Log level: Info Time: 11/11/2021 13:19:06 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-11 13:19:12.8419 INFO Log level: Info Time: 11/11/2021 13:19:12 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/DeleteUser/6 API method: HttpDelete Request parameters: 6 Message: User successfuly deleted.

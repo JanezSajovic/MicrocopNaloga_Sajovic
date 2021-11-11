@@ -55,11 +55,11 @@ namespace MicrocopNalogaV2.Repository
                 var userDelete = await _context.Users.FindAsync(id);
                 _context.Users.Remove(userDelete);
                 await _context.SaveChangesAsync();
-                msg = "Uporabnik izbrisan.";
+                msg = "User successfuly deleted.";
             }
             catch (Exception)
             {
-                msg = "Uporabnik ni izbrisan.";
+                msg = "User not deleted successfuly.";
             }
             return msg;
         }
@@ -125,11 +125,11 @@ namespace MicrocopNalogaV2.Repository
                 validatedUser.IsValidated = true;
                 _context.Users.Update(validatedUser);
                 await _context.SaveChangesAsync();
-                msg = "Uporabnikovo geslo uspešno potrjeno/validirano.";
+                msg = "User's password validated successfuly.";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                msg = ex.Message;
+                msg = "User's password validated unsuccessfuly.";
             }
             return msg;
         }

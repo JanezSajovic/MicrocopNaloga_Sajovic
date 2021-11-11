@@ -110,7 +110,7 @@ namespace MicrocopNalogaV2.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, "Updating user failed.");
             }
             await _userRepository.Update(_User);
-            LoggingCalls("Info", "HttpPut", userId + " " + _User.ToString(), "Updating the user data.");
+            LoggingCalls("Info", "HttpPut", userId + " " + _User.ToString(), "User data successfuly updated.");
             return Ok(_User);
         }
 
@@ -128,7 +128,7 @@ namespace MicrocopNalogaV2.Controllers
             }
             await _userRepository.Delete(tempUser.Id);
             LoggingCalls("Info", "HttpDelete", userId.ToString(), "User successfuly deleted.");
-            return Ok("User was successfuly deleted.");
+            return Ok("User successfuly deleted.");
         }
 
 
