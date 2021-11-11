@@ -32,5 +32,6 @@ Datoteke .log pa shranjujemo v mapo "**DailyLogFiles**" tudi znotraj projekta.
 Primer zapisa v .log datoteki
 
 [Imgur](https://imgur.com/HheXK5H)
+![alt text](https://imgur.com/HheXK5H)
 
 ####
