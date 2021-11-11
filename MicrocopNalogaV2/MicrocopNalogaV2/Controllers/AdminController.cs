@@ -65,11 +65,11 @@ namespace MicrocopNalogaV2.Controllers
             var admin = await AuthUser(tempAdmin);
             if (admin.Id == 0 || admin == null)
             {
-                LoggingCalls("Error", "HttpGet", username+password, "Signin in for admin failed.");
+                LoggingCalls("Error", "HttpGet", username+" "+password, "Signin in for admin failed.");
                 return StatusCode((int)HttpStatusCode.NotFound, "Admin does not exists.");
             }
             admin.ApiToken = GenerateJSONWebToken(tempAdmin);
-            LoggingCalls("Error", "HttpGet", username + password, "Signin in for admin failed.");
+            LoggingCalls("Error", "HttpGet", username +" "+ password, "Signin in for admin successful.");
             return Ok(admin);
         }
 

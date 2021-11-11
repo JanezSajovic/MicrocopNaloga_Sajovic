@@ -36,3 +36,26 @@ Primer izpisa v .log datoteki
 ![Primer izpisa](https://i.imgur.com/HheXK5H.png)
 
 ####
+
+## **Podatki v bazi**
+
+### Admin baza - Za namene testiranja
+
+| Uporabniško ime      | Geslo |
+| -------------------- | ----------- |
+| JureAdmin      | admin123       |
+| DomenAdmin   | Nepovemtigesla123!        |
+| ToneAdmin   | SkrivnoGeslo!321!        |
+
+
+### Uporabniki baza - Za namene testiranja
+
+| ID | Uporabniško ime | Geslo | Celo ime | Email | Telefon | Jezik | Kultura | Validiran |
+| - | - | - | - | - | - | - | - | - |
+| 1 | CirilK | cirilko123 | Ciril Kosmač | ciril.k@gmail.com | 017541474 | slovenščina | si | true |
+| 2 | ABoris | borisanovak! | Boris A. Novak | novakov.boris@gmail.com | 030698747 | slovenščina | si | false |
+| 4 | JKRowling | parryhotter12 | Joanne Rowling | Joanne.Rowling@gmail.com | 0802288 | angleščina | en | true |
+| 5 | Prešeren | kam123!! | France Prešeren | povodni.moz@gmail.com | 040187968 | slovenščina | si | false|
+
+####
+

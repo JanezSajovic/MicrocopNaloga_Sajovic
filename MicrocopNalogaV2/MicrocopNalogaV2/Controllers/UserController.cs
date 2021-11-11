@@ -103,32 +103,32 @@ namespace MicrocopNalogaV2.Controllers
                 Culture = user.Culture,
                 Language = user.Language
             };
-            var _User = _userRepository.Get(userId);
+            var _User = _userRepository.Get(userId).Result;
             if (userId != _User.Id || _User == null)
             {
                 LoggingCalls("Error", "HttpPut", userId + " " + _User.ToString(), "Bad request error.");
                 return StatusCode((int)HttpStatusCode.InternalServerError, "Updating user failed.");
             }
-            await _userRepository.Update(_User.Result);
+            await _userRepository.Update(_User);
             LoggingCalls("Info", "HttpPut", userId + " " + _User.ToString(), "Updating the user data.");
-            return Ok("User successfuly updated.");
+            return Ok(_User);
         }
 
         // Api Delete klic za brisanje uporabnika, na podlagi njegovega IDja
         // Klic je zaščiten z JwtBearer tokenom
         [HttpDelete("DeleteUser/{userId}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<string> Delete(int userId)
+        public async Task<ActionResult> Delete(int userId)
         {
             var tempUser = _userRepository.Get(userId).Result;
             if (tempUser == null)
             {
                 LoggingCalls("Error", "HttpDelete", userId.ToString(), "User does not exists.");
-                return "Uporabnik ne obstaja";
+                return StatusCode((int)HttpStatusCode.NotFound, "Deliting user failed. User not found. ");
             }
             await _userRepository.Delete(tempUser.Id);
-            LoggingCalls("Info", "HttpDelete", userId.ToString(), "User was successfuly deleted.");
-            return "Izbris uspešen";
+            LoggingCalls("Info", "HttpDelete", userId.ToString(), "User successfuly deleted.");
+            return Ok("User was successfuly deleted.");
         }
 
 
