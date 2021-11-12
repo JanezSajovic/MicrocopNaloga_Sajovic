@@ -19,13 +19,12 @@ namespace MicrocopNalogaV2.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
-        private IConfiguration _config;
+        private readonly IConfiguration _config;
         private readonly ILogger<UserController> _logger;
 
-        public UserController(IUserRepository adminRepository, IConfiguration config, ILogger<UserController> logger)
+        public UserController(IUserRepository adminRepository, ILogger<UserController> logger)
         {
             _userRepository = adminRepository;
-            _config = config;
             _logger = logger;
         }
 

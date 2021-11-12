@@ -49,19 +49,17 @@ namespace MicrocopNalogaV2.Repository
         // V odgovor pošljemo ali je bil uporabnik izbrisan uspešno ali ne
         public async Task<string> Delete(int id)
         {
-            string msg = "";
             try
             {
                 var userDelete = await _context.Users.FindAsync(id);
                 _context.Users.Remove(userDelete);
                 await _context.SaveChangesAsync();
-                msg = "User successfuly deleted.";
+                return "User successfuly deleted.";
             }
             catch (Exception)
             {
-                msg = "User not deleted successfuly.";
+                return "User not deleted successfuly.";
             }
-            return msg;
         }
 
 

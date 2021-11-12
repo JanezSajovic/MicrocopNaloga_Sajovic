@@ -43,8 +43,7 @@ Primer izpisa v .log datoteki
 
 | Uporabniško ime      | Geslo |
 | -------------------- | ----------- |
-| JureAdmin      | Admin123!       |
-| DomenAdmin   | Nepovemtigesla123!        |
+| JakaAdmin      | Admin123!       |
 | ToneAdmin   | SkrivnoGeslo!321!        |
 
 
@@ -52,12 +51,11 @@ Primer izpisa v .log datoteki
 
 | ID | Uporabniško ime | Geslo | Celo ime | Email | Telefon | Jezik | Kultura | Validiran |
 | - | - | - | - | - | - | - | - | - |
-| 1 | CirilK | Cirilko123! | Ciril Kosmač | ciril.k@gmail.com | 017541474 | slovenščina | si | true |
-| 2 | ABoris | Borisanovak4! | Boris A. Novak | novakov.boris@gmail.com | 030698747 | slovenščina | si | false |
-| 4 | JKRowling | parryHotter12! | Joanne Rowling | Joanne.Rowling@gmail.com | 0802288 | angleščina | en | true |
-| 5 | Prešeren | Kam123!! | France Prešeren | povodni.moz@gmail.com | 040187968 | slovenščina | si | false|
+| 1 | CirilK | Ciril123! | Ciril Kosmač | ciril.k@gmail.com | 017541474 | slovenščina | si | true |
+| 2 | ABoris | Boris456! | Boris A. Novak | novakov.boris@gmail.com | 030698747 | slovenščina | si | false |
+| 4 | JKRowling | Harry789! | Joanne Rowling | Joanne.Rowling@gmail.com | 0802288 | angleščina | en | true |
+| 5 | Preseren | Kam123!! | France Prešeren | povodni.moz@gmail.com | 040187968 | slovenščina | si | false|
 
 ####
 
-Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzY2NDMyNDksImlzcyI6IlRlc3QuY29tIiwiYXVkIjoiVGVzdC5jb20ifQ.ptjCSyFxuIJ1vkHUtV7VBKpxnLSDquQbZ1C97fiItss
-
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzY3MjY5MTEsImlzcyI6IlRlc3QuY29tIiwiYXVkIjoiVGVzdC5jb20ifQ.bdqMkTtT2dIYodIvodT8REhL6iCb99HZHf4tRPmy8Ow

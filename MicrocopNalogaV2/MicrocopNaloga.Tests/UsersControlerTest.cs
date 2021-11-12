@@ -8,22 +8,28 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using MicrocopNalogaV2.Models.Models;
+using System.Threading.Tasks;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace MicrocopNaloga.Tests
 {
+    // Arrange mean that we need to arrange or set up the necessary parameters for the test.
+    // Act means just do the action which might be calling a method, calling a controller.
+    // Assert means just evaluate the result.
     public class UsersControlerTest
     {
-        public UserController _controller;
-        public IUserRepository _context;
-        public ILogger<UserController> _logger;
-        public IConfiguration _config;
+        private readonly UserController _controller;
+        private readonly IUserRepository _context;
+        private readonly ILogger<UserController> _logger;
+        private readonly IUserRepository _service;
 
-        public UsersControlerTest(IUserRepository userRepository, IConfiguration config, ILogger<UserController> logger)
+        public UsersControlerTest(IUserRepository userRepository, ILogger<UserController> logger)
         {
             _logger = logger;
-            _config = config;
             _context = userRepository;
-            _controller = new UserController(_context, _config, _logger);
+            _service = new IUserServiceFake();
+            _controller = new UserController(_service, logger);
 
         }
 
@@ -38,11 +44,11 @@ namespace MicrocopNaloga.Tests
             Assert.IsType<List<UserModel>>(list.Value);
             var listBooks = list.Value as List<UserModel>;
 
-            // Pričakujemo da je v bazi 5 uporabnikov
-            Assert.Equal(5, listBooks.Count);
+            // Pričakujemo da so v bazi 3 uporabniki
+            Assert.Equal(3, listBooks.Count);
         }
 
-        // Test s katerim pričakujemo da se pod ID=1 nahajajo podatki o Cirilu Kosmaču
+        // Test s katerim pričakujemo da se pod ID = 1 nahajajo podatki o Cirilu Kosmaču
         // ID = 99 pa uporabnik ne obstaja 
         [Theory]
         [InlineData(1, 99)]
@@ -76,9 +82,11 @@ namespace MicrocopNaloga.Tests
 
         }
 
+
+        // Test dodajanje novega uporabnika z vsemi parametri ki so pravilni
+        // Test dodajanje novega uporabnika z manjkajočimi parametri ki pa so zahtevani (required)
         [Fact]
         public void AddUserTest() {
-            //OK RESULT TEST START
 
             //Arrange
             var user = new UserMiniModel()
@@ -87,23 +95,87 @@ namespace MicrocopNaloga.Tests
                 Email = "lovro.kuhar@gmail.com",
                 Language = "slovenščina",
                 Culture = "si",
-                Password = "Kurah123!",
+                Password = "Kuhar123!",
                 PhoneNumber = "030888555"                           
             };
 
             //Act
             var createdResponse = _controller.Create(user);
 
-            //Assert
-            Assert.IsType<UserModel>(createdResponse);
+            Assert.IsType<Task<IActionResult>>(createdResponse);
 
             //value of the result
-            //var item = createdResponse as UserModel;
-            //Assert.IsType<UserModel>(item.Value);
+            var item = createdResponse as Task<IActionResult>;
+            Assert.IsType<UserModel>(item.Result);
 
             //check value of this book
-            //var tempUser = item.Value as UserModel;
-            //Assert.Equal(user.Author, bookItem.Author);
+            var tempUser = item.Result as UserModel;
+            Assert.Equal(tempUser.UserName, user.UserName);
+            Assert.Equal(tempUser.Password, user.Password);
+            Assert.Equal(tempUser.Email, user.Email);
+            Assert.Equal(tempUser.PhoneNumber, user.PhoneNumber);
+            Assert.Equal(tempUser.Culture, user.Culture);
+            Assert.Equal(tempUser.Language, user.Language);
+
+
+            //Arrange
+            var incompleteUser = new UserMiniModel()
+            {
+                UserName = "BojanL",
+                Email = "bojan.lovec@gmail.com",
+                Language = "slovenščina",
+                Culture = "si",
+                Password = "Lovec123!",
+            };
+
+            //Act
+            _controller.ModelState.AddModelError("Phone", "Title is a requried filed");
+            var badResponse = _controller.Create(incompleteUser);
+
+            //Assert
+            Assert.IsType<BadRequestObjectResult>(badResponse);
+        }
+
+
+        // Brisanje uporabnika preko IDja ki ne obstaja. Velikost seznama se ne spremeni
+        // Brisanje uporabnika. Velikost seznama se spremeni 
+        [Theory]
+        [InlineData(1, 99)]
+        public void RemoveUserTest(int trueId, int fakeId) {
+            // Arange
+            var validId = trueId;
+            var invalidId = fakeId;
+
+            // Act
+            var notFoundResult = _controller.Delete(invalidId);
+
+            // Assert
+            // Velikost seznama se ne spremeni
+            Assert.IsType<NotFoundResult>(notFoundResult);
+            Assert.Equal(4, _service.Gets().Result.Count);
+
+            // Act
+            var okResult = _controller.Delete(trueId);
+
+
+            // Assert
+            // VElikost seznama se spremeni
+            Assert.IsType<OkResult>(okResult);
+            Assert.Equal(3, _service.Gets().Result.Count);
+        }
+
+
+        public string HashPassword(string password)
+        {
+            var hashed = "";
+            using (var myHash = SHA256Managed.Create())
+            {
+                var byteArrayResultOfRawData = Encoding.UTF8.GetBytes(password);
+                var byteArrayResult = myHash.ComputeHash(byteArrayResultOfRawData);
+                hashed = string.Concat(Array.ConvertAll(byteArrayResult, h => h.ToString("X2")));
+            }
+
+            return hashed;
         }
     }
 }
