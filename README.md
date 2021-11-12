@@ -33,7 +33,7 @@ Konfiguracija logiranja se nahaja v **nlog.config** datoteki znotraj projekta.
 Datoteke .log pa shranjujemo v mapo "**DailyLogFiles**" tudi znotraj projekta.  
 Primer izpisa v .log datoteki
 
-![Primer izpisa](https://i.imgur.com/HheXK5H.png)
+![Primer izpisa](https://i.imgur.com/flMJPNs.png)
 
 ####
 
@@ -63,12 +63,12 @@ Primer izpisa v .log datoteki
 ####
 Dodan projekt za testiranje API klicev znotraj projekta
 Dodatni testi
-- Gets -> Pridobivanje celotnega seznama uporabnikov
-- Get(id) -> Priobivanje uporabnika s podanim IDjam
-- Create(user) - Kreiranje novega uporabnika
-- Update(id, user) - Posodobitev uporabnikovih podatkov pod podanim IDjem
+- **Gets** -> Pridobivanje celotnega seznama uporabnikov
+- **Get(id)** -> Priobivanje uporabnika s podanim IDjam
+- **Create(user)** - Kreiranje novega uporabnika
+- **Update(id, user)** - Posodobitev uporabnikovih podatkov pod podanim IDjem
 
-Testi ne delujejo. Mi ni uspelo rešiti napake, ki se pojavi ko zaženem teste.
+Testi **ne delujejo**. Mi ni uspelo rešiti napake, ki se pojavi ko zaženem teste.
 Sem pa nastavil, kako naj bi izgledala koda za testiranje API klicev.
 Poizkusil sem tudi z FakeItEasy paketom in je bila napaka enaka. 
 
