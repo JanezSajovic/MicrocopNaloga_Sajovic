@@ -58,4 +58,19 @@ Primer izpisa v .log datoteki
 
 ####
 
-Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzY3MjY5MTEsImlzcyI6IlRlc3QuY29tIiwiYXVkIjoiVGVzdC5jb20ifQ.bdqMkTtT2dIYodIvodT8REhL6iCb99HZHf4tRPmy8Ow
+## **Unit Testiranje**
+
+####
+Dodan projekt za testiranje API klicev znotraj projekta
+Dodatni testi
+- Gets -> Pridobivanje celotnega seznama uporabnikov
+- Get(id) -> Priobivanje uporabnika s podanim IDjam
+- Create(user) - Kreiranje novega uporabnika
+- Update(id, user) - Posodobitev uporabnikovih podatkov pod podanim IDjem
+
+Testi ne delujejo. Mi ni uspelo rešiti napake, ki se pojavi ko zaženem teste.
+Sem pa nastavil, kako naj bi izgledala koda za testiranje API klicev.
+Poizkusil sem tudi z FakeItEasy paketom in je bila napaka enaka. 
+
+
+####

@@ -205,7 +205,6 @@ namespace MicrocopNaloga.Tests
 
         }
 
-
         public string HashPassword(string password)
         {
             var hashed = "";

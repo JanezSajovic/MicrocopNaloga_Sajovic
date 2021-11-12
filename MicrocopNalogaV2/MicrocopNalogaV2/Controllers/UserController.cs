@@ -147,9 +147,11 @@ namespace MicrocopNalogaV2.Controllers
         // Konfiguracija se nahaja v nlog.config
         private void LoggingCalls(string level, string method, string para, string msg)
         {
-            var clientIP = HttpContext.Connection.RemoteIpAddress?.ToString();
-            var clientName = HttpContext.Features.Get<IServerVariablesFeature>()["REMOTE_HOST"];
+            var clientIP = String.Concat("IPv4: ", Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString(), " IPv6: ", Dns.GetHostEntry(Dns.GetHostName()).AddressList[0].ToString());
+            var clientName = Dns.GetHostEntry(Dns.GetHostName()).HostName;
             var hostName = string.Concat(this.Request.Scheme, "://", this.Request.Host, this.Request.Path, this.Request.QueryString);
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+
             string log =
                 "Log level: " + level + " Time: " + DateTime.Now +
                 " ClientIp: " + clientIP + " ClientName: " + clientName +

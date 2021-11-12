@@ -25,3 +25,33 @@
 2021-11-12 13:27:37.0741 INFO Log level: Info Time: 12/11/2021 13:27:37 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
 2021-11-12 13:31:29.7129 INFO Log level: Info Time: 12/11/2021 13:31:29 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
 2021-11-12 13:31:59.6710 INFO Log level: Info Time: 12/11/2021 13:31:59 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/UpdateUser/4 API method: HttpPut Request parameters: 4 Id: 4, Username: JKRowling, Password: 5FBF7F67C6B65428ECC2CD5B37B49A99DCD2C0C8CC0370F3B4B8A71A120F3C00, Full name: Joanne Rowling, Email: novakov.boris@gmail.com, Phone number: 0802288, Language: angleščina, Culture: en, Is validated: True Message: User data successfuly updated.
+2021-11-12 15:47:08.6566 INFO Application started. Press Ctrl+C to shut down.
+2021-11-12 15:47:08.6799 INFO Hosting environment: Development
+2021-11-12 15:47:08.6889 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaSajovic\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-12 15:48:43.3562 INFO Log level: Info Time: 12/11/2021 15:48:43 ClientIp: ::1 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-12 15:50:26.5962 INFO Application started. Press Ctrl+C to shut down.
+2021-11-12 15:50:26.6227 INFO Hosting environment: Development
+2021-11-12 15:50:26.6227 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaSajovic\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-12 15:51:39.9824 INFO Application started. Press Ctrl+C to shut down.
+2021-11-12 15:51:40.0079 INFO Hosting environment: Development
+2021-11-12 15:51:40.0105 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaSajovic\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-12 15:52:25.8170 INFO Log level: Info Time: 12/11/2021 15:52:25 ClientIp:  ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-12 15:54:27.6884 INFO Log level: Info Time: 12/11/2021 15:54:27 ClientIp: 192.168.1.66 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-12 15:55:18.2084 INFO Log level: Info Time: 12/11/2021 15:55:18 ClientIp: 192.168.1.66 ClientName: ::1 Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-12 15:57:16.1255 INFO Log level: Info Time: 12/11/2021 15:57:16 ClientIp: https://localhost:44305/api/User/ListOfUsers ClientName: ::1 Host name: 192.168.1.66 API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
+2021-11-12 16:13:38.7133 INFO Application started. Press Ctrl+C to shut down.
+2021-11-12 16:13:38.7387 INFO Hosting environment: Development
+2021-11-12 16:13:38.7387 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaSajovic\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-12 16:14:50.3659 INFO Log 
+level: Info 
+Time: 12/11/2021 16:14:50 
+ClientIp: IPv4: 192.168.1.66 IPv6: fe80::8947:af10:c038:3c71%11 
+ClientName: DESKTOP-C9AD1HO 
+Host name: https://localhost:44305/api/User/ListOfUsers
+API method: HttpGet 
+Request parameters: no parameters 
+Message: Geting list of all users in database.
+2021-11-12 16:19:28.9651 INFO Application started. Press Ctrl+C to shut down.
+2021-11-12 16:19:28.9880 INFO Hosting environment: Development
+2021-11-12 16:19:28.9940 INFO Content root path: F:\___PROJECTS___\MicrocopNalogaSajovic\MicrocopNaloga_Sajovic\MicrocopNalogaV2\MicrocopNalogaV2
+2021-11-12 16:19:34.4971 INFO Log level: Info Time: 12/11/2021 16:19:34 ClientIp: IPv4: 192.168.1.66 IPv6: fe80::8947:af10:c038:3c71%11 ClientName: DESKTOP-C9AD1HO Host name: https://localhost:44305/api/User/ListOfUsers API method: HttpGet Request parameters: no parameters Message: Geting list of all users in database.
