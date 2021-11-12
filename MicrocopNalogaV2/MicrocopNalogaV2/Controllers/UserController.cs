@@ -90,7 +90,7 @@ namespace MicrocopNalogaV2.Controllers
         // Klic je zaščiten z JwtBearer tokenom
         [HttpPut("UpdateUser/{userId}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<ActionResult> Update(int userId, [FromBody]UserMiniModel user)
+        public async Task<IActionResult> Update(int userId, [FromBody]UserMiniModel user)
         {
             UserModel tempUser = new UserModel()
             {

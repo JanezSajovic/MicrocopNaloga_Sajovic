@@ -20,17 +20,12 @@ namespace MicrocopNaloga.Tests
     public class UsersControlerTest
     {
         private readonly UserController _controller;
-        private readonly IUserRepository _context;
-        private readonly ILogger<UserController> _logger;
         private readonly IUserRepository _service;
 
-        public UsersControlerTest(IUserRepository userRepository, ILogger<UserController> logger)
+        public UsersControlerTest(ILogger<UserController> logger)
         {
-            _logger = logger;
-            _context = userRepository;
             _service = new IUserServiceFake();
             _controller = new UserController(_service, logger);
-
         }
 
         [Fact]
@@ -81,7 +76,6 @@ namespace MicrocopNaloga.Tests
             Assert.True(user.IsValidated);
 
         }
-
 
         // Test dodajanje novega uporabnika z vsemi parametri ki so pravilni
         // Test dodajanje novega uporabnika z manjkajočimi parametri ki pa so zahtevani (required)
@@ -136,7 +130,6 @@ namespace MicrocopNaloga.Tests
             Assert.IsType<BadRequestObjectResult>(badResponse);
         }
 
-
         // Brisanje uporabnika preko IDja ki ne obstaja. Velikost seznama se ne spremeni
         // Brisanje uporabnika. Velikost seznama se spremeni 
         [Theory]
@@ -164,6 +157,54 @@ namespace MicrocopNaloga.Tests
             Assert.Equal(3, _service.Gets().Result.Count);
         }
 
+        // Test spreminjanja podatkov uporabnika z veljavnim IDjem in podatki
+        // Test spreminjanja podatkov uporabnika z neveljavnim idjem in nepravimi podatki
+        [Theory]
+        [InlineData(1, 99)]
+        public void UpdateUserTest(int trueId, int fakeId) {
+            // Arange
+            var validId = trueId;
+            var invalidId = fakeId;
+
+            // posodobimo telefonkso številko
+            var user = new UserMiniModel
+            {
+                UserName = "Preseren",
+                Password = "Kam123!!",
+                Email = "povodni.moz@gmail.com",
+                Culture = "si",
+                Language = "slovenščina",
+                PhoneNumber = "068987654",
+                FullName = "France Prešeren"
+            };
+
+            //Act valid
+            var createdResponse = _controller.Update(validId, user);
+
+            Assert.IsType<Task<IActionResult>>(createdResponse);
+
+            var item = createdResponse as Task<IActionResult>;
+            Assert.IsType<UserModel>(item.Result);
+
+            var updatedUser = item.Result as UserModel;
+            Assert.Equal(updatedUser.Id, validId);
+            Assert.Equal(updatedUser.UserName, user.UserName);
+            Assert.Equal(updatedUser.Password, user.Password);
+            Assert.Equal(updatedUser.Email, user.Email);
+            Assert.Equal(updatedUser.PhoneNumber, user.PhoneNumber);
+            Assert.Equal(updatedUser.Culture, user.Culture);
+            Assert.Equal(updatedUser.Language, user.Language);
+
+
+            //Act invalid
+            var createdResponseInvalid = _controller.Update(invalidId, user);
+            Assert.IsType<NotFoundResult>(createdResponseInvalid);
+
+            var invaliItem = createdResponse as Task<IActionResult>;
+            Assert.IsType<UserModel>(item.Result);
+
+        }
+
 
         public string HashPassword(string password)
         {
@@ -174,7 +215,6 @@ namespace MicrocopNaloga.Tests
                 var byteArrayResult = myHash.ComputeHash(byteArrayResultOfRawData);
                 hashed = string.Concat(Array.ConvertAll(byteArrayResult, h => h.ToString("X2")));
             }
-
             return hashed;
         }
     }

@@ -110,7 +110,6 @@ namespace MicrocopNalogaV2.Repository
             }
         }
 
-
         // Validiranje/preverjanje ali je uporabnikovo geslo pravilno
         // Uporabnika pridobimo na poglagi njegovega uporabniškega imena in gesla, ki pa je v bazi heširano
         // Če se gesli ujemata uporabniku polje "IsValidated" spremenimo na "true" (privzeto je "false")
